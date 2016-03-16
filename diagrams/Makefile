@@ -6,4 +6,4 @@ svg/invoice-process.svg: invoice-process.dia
 
 png/invoice-process.svg: invoice-process.dia
 	mkdir -p png
-	dia --export=svg/invoice-process.png --filter=cairo-png --size=1024x768 invoice-process.dia
+	dia --export=png/invoice-process.png --filter=png --size=1024x768 invoice-process.dia

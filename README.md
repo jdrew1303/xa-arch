@@ -22,7 +22,7 @@ The Xalgorithms Federated Registry of Rules is being created as a distributable,
 
 The Lichen class of components will be for installation adjacent to or semi-embedded into any application with a suitable API that requires automated access to external rules. Lichen is named after the diverse and colorful family of symbiotic living things that attach to the surfaces of other objects, without interfering in their internal functions or integrity.
 
-This project serves diverse use cases, however our reference implementation applies to commerce. Xalgorithms prototyping will support network-based automation of taxes, exemptions, duties, credits, loyalty settings, algorithmic pricing, micro-payment and multi-payment structuring, agent-based based scrutiny with user-defined constraints, and disclosure-controlled multi-scale data generation for real-time or trend analytics.
+This project serves diverse use cases, however our reference implementation applies to commerce. Xalgorithms prototyping will support network-based automation of taxes, exemptions, duties, credits, loyalty incentives, algorithmic pricing, micro-payment and multi-payment structuring, agent-based scrutiny with user-defined constraints, and disclosure-controlled multi-scale data generation for real-time or trend analytics.
 
 INTELLECTUAL RIGHTS & LICENSING
 

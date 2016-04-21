@@ -1,0 +1,49 @@
+This is a proposed, conceptual, representation of table-transforming
+rules for Lichen. The syntax is line-oriented but could be changed to
+another representation (like JSON). The names of operations are
+capitalized in this example, but this is possibly not required were a
+different representation used.
+
+| ACTION                           | EFFECT                                                                                                                                      |
+|----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
+| ATTACH repo.lichen.org AS lichen | Use repo.lichen.org as a Repository named "lichen"                                                                                          |
+| GET lichen:rule0:1234 AS foo     | Load a rule as a table from the "lichen" repo                                                                                               |
+| USE foo                          | Use the table named "foo" as the current table that actions will target                                                                     |
+| MAP bar USING (x, y) [DEFAULT z] | In the table bar where the value in bar.y == foo.x, reassign any matching column keys in foo using those in bar; if there is no match use z |
+| MUL <APPLY syntax>               | APPLY with multiplication                                                                                                                   |
+| DIV <APPLY syntax>               | APPLY with division                                                                                                                         |
+| ADD <APPLY syntax>               | APPLY with addition                                                                                                                         |
+| SUB <APPLY syntax>               | APPLY with subtraction                                                                                                                      |
+| CONCAT <APPLY syntax>            | APPLY with string concatenation                                                                                                             |
+| REQUIRE lichen:rule0:1234 AS z   | Load a rule as executable code from the repo                                                                                                |
+| MAP bar USING z.f                | Same as MAP above, except the function f in the required module z is called                                                                 |
+| FILTER foo USING z.f             | Reduce the rows in foo in the function f                                                                                                    |
+
+Example:
+
+Table: foo
+
+| A | B | C |  D |
+|---+---+---+----|
+| 1 | 2 | 3 |  4 |
+| 2 | 4 | 6 |  8 |
+| 3 | 6 | 9 | 12 |
+
+Table: bar
+
+| X | Y |  C | D |
+|---+---+----+---|
+| 1 | 1 |  4 | 3 |
+| 2 | 1 | 10 | 9 |
+
+Rule:
+
+USE foo
+MAP bar USING (A, X) DEFAULT 100
+
+| A | B |   C |   D |
+|---+---+-----+-----|
+| 1 | 2 |   4 |   3 |
+| 2 | 4 |  10 |   9 |
+| 3 | 6 | 100 | 100 |
+

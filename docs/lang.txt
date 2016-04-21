@@ -4,6 +4,10 @@ another representation (like JSON). The names of operations are
 capitalized in this example, but this is possibly not required were a
 different representation used.
 
+This will be implemented with an interpreter library in the xa-rules
+repository. Users of the library (Lichen, for example) may also inject
+additional tables and code modules before executing the rule.
+
 | ACTION                           | EFFECT                                                                                                                                      |
 |----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------|
 | ATTACH repo.lichen.org AS lichen | Use repo.lichen.org as a Repository named "lichen"                                                                                          |

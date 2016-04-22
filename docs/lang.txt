@@ -11,7 +11,7 @@ additional tables and code modules before executing the rule.
 
 | ACTION                                 | EFFECT                                                                                           |
 |----------------------------------------+--------------------------------------------------------------------------------------------------|
-| EXPECT foo HAVING [x, y, z]            | Anticipate a table in the environment named "foo" having at least "x", "y", "z" as columns       |
+| EXPECT foo[x, y, z]                    | Anticipate a table in the environment named "foo" having at least "x", "y", "z" as columns       |
 | COMMIT foo[x, y, z]                    | Record the values in x, y, z as permanent changes to table foo                                   |
 | ATTACH repo.lichen.org AS lichen       | Use repo.lichen.org as a Repository named "lichen"                                               |
 | GET lichen:rule0:1234 AS foo           | Load a rule as a table from the "lichen" repo                                                    |

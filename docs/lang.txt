@@ -9,17 +9,17 @@ This will be implemented with an interpreter library in the xa-rules
 repository. Users of the library (Lichen, for example) may also inject
 additional tables and code modules before executing the rule.
 
-| ACTION                                 | EFFECT                                                                                           |
-|----------------------------------------+--------------------------------------------------------------------------------------------------|
-| EXPECT foo[x, y, z]                    | Anticipate a table in the environment named "foo" having at least "x", "y", "z" as columns       |
-| COMMIT foo[x, y, z]                    | Record the values in x, y, z as permanent changes to table foo                                   |
-| ATTACH repo.lichen.org AS lichen       | Use repo.lichen.org as a Repository named "lichen"                                               |
-| GET lichen:rule0:1234 AS foo           | Load a rule as a table from the "lichen" repo                                                    |
-| USE foo                                | Use the table named "foo" as the current table that actions will target                          |
-| MAP bar USING <func>(x, y) [DEFAULT z] | In the table bar where bar.y == foo.x, apply the function "func", replacing all matching columns |
-| REQUIRE lichen:rule0:1234 AS z         | Load a rule as executable code from the repo                                                     |
-| MAP bar USING z.f                      | Same as MAP above, except the function f in the required module z is called                      |
-| FILTER foo USING z.f                   | Reduce the rows in foo in the function f                                                         |
+| ACTION                                   | EFFECT                                                                                           |
+|------------------------------------------+--------------------------------------------------------------------------------------------------|
+| EXPECT foo[x, y, z]                      | Anticipate a table in the environment named "foo" having at least "x", "y", "z" as columns       |
+| COMMIT foo[x, y, z]                      | Record the values in x, y, z as permanent changes to table foo                                   |
+| ATTACH repo.lichen.org AS lichen         | Use repo.lichen.org as a Repository named "lichen"                                               |
+| GET lichen:rule0:1234 AS foo             | Load a rule as a table from the "lichen" repo                                                    |
+| USE foo                                  | Use the table named "foo" as the current table that actions will target                          |
+| APPLY bar USING <func>(x, y) [DEFAULT z] | In the table bar where bar.y == foo.x, apply the function "func", replacing all matching columns |
+| REQUIRE lichen:rule0:1234 AS z           | Load a rule as executable code from the repo                                                     |
+| MAP bar USING z.f                        | Same as MAP above, except the function f in the required module z is called                      |
+| FILTER foo USING z.f                     | Reduce the rows in foo in the function f                                                         |
 
 
 Internal functions for MAP:
@@ -58,8 +58,8 @@ Table: baz
 Rule:
 
 USE foo
-MAP bar USING copy(A, X) DEFAULT 100
-MAP baz USING add(A, Q)
+APPLY bar USING copy(A, X) DEFAULT 100
+APPLY baz USING add(A, Q)
 
 
 | A | B |   C |   D |
@@ -72,6 +72,6 @@ This could also be represented in JSON:
 
 [
   { "use" : "foo" },
-  { "map" : { "bar" : ["copy", ["A", "X"], 100] } },
-  { "map" : { "baz" : ["add", ["A, "Q"]] } },
+  { "apply" : { "bar" : ["copy", ["A", "X"], 100] } },
+  { "apply" : { "baz" : ["add", ["A, "Q"]] } },
 ]

@@ -62,11 +62,25 @@ APPLY bar USING copy(A, X) DEFAULT 100
 APPLY baz USING add(A, Q)
 
 
+At this point, this is "foo":
+
 | A | B |   C |   D |
 |---+---+-----+-----|
 | 1 | 2 |   9 |   3 |
 | 2 | 4 |  12 |   9 |
 | 3 | 6 | 110 | 100 |
+
+
+USE baz
+APPLY foo USING copy(Q, B) DEFAULT 1
+
+Now we have modofied "baz" to get:
+
+| Q | C |
+|---+---|
+| 1 | 1 |
+| 2 | 9 |
+| 3 | 1 |
 
 This could also be represented in JSON:
 

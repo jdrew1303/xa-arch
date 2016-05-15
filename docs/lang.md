@@ -29,18 +29,29 @@ The program expects the calling context of the interpreter to supply a table wit
 Attach the top of the stack to *named table* in the output to the calling context. Column names can be optionally specified.
 
 #### Stack
-```PUSH <name>```
+```
+PUSH <name>
+```
 
 Push a *named table* onto the stack.
 
+```
+POP
+```
+
 Pop the stack. The table that was on the top of the stack is lost.
 
-```DUPLICATE```
+```
+DUPLICATE
+```
 
 Duplicate the top of the stack.
 
 #### Mutations
-```JOIN USING [[l0, ..., lN], [r0, ..., rN]] INCLUDE [c0, ..., cN]```
+
+```
+JOIN USING [[l0, ..., lN], [r0, ..., rN]] INCLUDE [c0, ..., cN]
+```
 
 Join two tables where the columns from the left match the columns on the right. The tables are pulled from the stack as right, then left. The resulting table is pushed to the stack. The INCLUDE is optional and specifies a list of columns from the right table that should appear in the result. If there is no INCLUDE, all columns are merged into the resulting table. If there are column name collisions, the columns from the right table take precedence. This can be used to replace columns in the left table.
 
@@ -49,6 +60,7 @@ Join two tables where the columns from the left match the columns on the right. 
 ### Example
 
 ##### Tables
+
 ```
 foo = [
  { a: 1, b: 2, c: 3 },
@@ -61,13 +73,16 @@ bar = [
   { x: 3, y: 12 },
 ]
 ```
+
 ##### Program
+
 ```
 PUSH foo
 PUSH bar
 JOIN USING [[a, b], [x, y]]
 COMMIT t[a, y]
 ```
+
 This program yields:
 
 ```

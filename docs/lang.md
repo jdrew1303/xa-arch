@@ -33,8 +33,6 @@ Attach the top of the stack to *named table* in the output to the calling contex
 
 Push a *named table* onto the stack.
 
-```POP```
-
 Pop the stack. The table that was on the top of the stack is lost.
 
 ```DUPLICATE```

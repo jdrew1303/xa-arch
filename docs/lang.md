@@ -1,5 +1,5 @@
-### Table Transformation
-In the XA system there is a requirement for [Repository](https://github.com/Xalgorithms/xa-repository.simple) owners to be able to represent rules in a readable format that can be stored in the [Registry](https://github.com/Xalgorithms/xa-registry). These rules are composed of tables and series of operations on tables. The language documented in the following sections fulfills the *series of operations* component of this thinking.
+### Table Transformation in the Limited-Purpose "Xalgo" Language
+In the XA system there is a requirement for [Repository](https://github.com/Xalgorithms/xa-repository.simple) owners to be able to represent rules in a readable format that can be stored in the [Registry](https://github.com/Xalgorithms/xa-registry). These rules are composed of tables and series of operations on tables. The "Xalgo" language documented in the following sections fulfills the specified *series of operations* component of this thinking. It is intentionally very limited in scope.
 
 The language itself is *line-oriented*. Each line in a program represents a single, atomic operation on a table or the context in which the program is run. It includes the ability to specific *expectations* and *outputs* of the program. There are two primary data structures in the language:
 

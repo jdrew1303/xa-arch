@@ -12,7 +12,7 @@ The language itself is *line-oriented*. Each line in a program represents a sing
 
 Associate a *repository* at the URL with a name within the scope of the current program.
 
-```PULL <repo>:<rule>:<version> AS <name>```
+```PULL <repo>:<rule>:<version> AS <name>[<c0>, ..., <cN>]```
 
 Pull a table with the given *name* and *version* from a previously named repository. The table will be referencable using the supplied *name*.
 
@@ -57,7 +57,9 @@ Join two tables where the columns from the left match the columns on the right. 
 
 *More mutations will be added as required*.
 
-### Example
+### Examples
+
+This is a generic example to show the way that JOIN will function.
 
 ##### Tables
 
@@ -77,6 +79,8 @@ bar = [
 ##### Program
 
 ```
+EXPECTS foo[a, b, c]
+EXPECTS bar[x, y]
 PUSH foo
 PUSH bar
 JOIN USING [[a, b], [x, y]]
@@ -91,5 +95,53 @@ t = [
  { a: 1 },
  { a: 2, y: 6 },
  { a: 3, y: 12 },
+]
+```
+
+This example shows how a product code (SKU) might be converted to a UNSPSC code.
+
+##### Tables
+
+```
+# a collection of items pulled from a cllection of invoices
+items = [
+  { name: 'Laptop', sku: 'A12345' },
+  { name: 'Power Adapter', sku: 'XXX111' },
+]
+
+# refer below, this is not provided by lichen - it's pulled from the registry
+skus_unspscs = [
+  # supplier has coded their laptop SKU as 'consumer electronics'
+  { sku: 'A12345', unspsc: '52160000' }
+]
+```
+
+##### Program
+
+```
+# table supplied by lichen
+EXPECTS items[name, sku]
+
+# pull external table from the registry
+ATTACH http://www.xalgorithms.org AS xa
+# syntax indicates that table should at least have two columns
+PULL xa:supplier_skus:20160511 AS skus_unspscs[sku, unspsc]
+
+PUSH items
+PUSH skus_unspscs
+JOIN USING [[sku], [sku]] INCLUDE [unspsc]
+
+# output the result
+COMMIT unspsc_items[name, unspsc]
+```
+
+Yields:
+
+```
+unspsc_items = [
+  { name: 'Laptop', unspsc: '52160000' },
+  # no unspsc for this item because it was not coded
+  # in xa:supplier_skus:20160511
+  { name: 'Power Adapter' },
 ]
 ```

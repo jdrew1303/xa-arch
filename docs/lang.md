@@ -145,3 +145,4 @@ unspsc_items = [
   { name: 'Power Adapter' },
 ]
 ```
+Dual Licensed: CC-by-4.0 and Apache 2.0 

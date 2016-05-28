@@ -46,7 +46,7 @@ INCLUSION USING [[seller_location], [code]] INCLUDE [is_member AS seller_in_waem
 
 # determine EU inclusion
 PUSH eu
-INCUSION USING [[buyer_location], [code]] INCLUDE [is_member AS buyer_in_eu]
+INCLUSION USING [[buyer_location], [code]] INCLUDE [is_member AS buyer_in_eu]
 
 # apply WAEMU CET taxation
 PUSH waemu_cet

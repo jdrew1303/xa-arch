@@ -6,6 +6,54 @@ The language itself is *line-oriented*. Each line in a program represents a sing
 * **tables**: All data in or supplied to the program is in the form of tables referenced by a name. These tables are supplied either by the calling context **or** as retrievals within the program. Once assigned to a *name* the name *cannot* be reassigned. Tables are represented with a JSON-like syntax.
 * **stack**: Tables to be mutated are placed on the stack. Any results of a mutation is pushed onto the stack.
 
+### Conventions
+
+In this document, tables will be represented in JSON format. A table will be shown as a JSON Array containing JSON Objects. Each key in the object will represent a column.
+
+Example:
+
+```
+[
+ { a: 1, b: 2, c: 3 },
+ { a: 2, b: 4, c: 6 },
+ { a: 3, b: 6, c: 9 },
+]
+```
+
+If, for the purposes of explanation, the table needs an associated reference name, it will be specified as a Javascript variable. This is merely for example purposes and does not represent a prescribed format in Repositories.
+
+Example:
+
+```
+foo = [
+ { a: 1, b: 2, c: 3 },
+ { a: 2, b: 4, c: 6 },
+ { a: 3, b: 6, c: 9 },
+]
+
+bar = [
+ { x: 1, y: 2 }
+]
+```
+
+These tables may be referenced in example of *xalgo* code using the names *foo* and *bar*.
+
+If, for the purposes of explanation, the stack needs to be shown, it will follow this example:
+
+```
+0 => [
+ { a: 1, b: 2, c: 3 },
+ { a: 2, b: 4, c: 6 },
+ { a: 3, b: 6, c: 9 },
+]
+
+1 => [
+ { x: 1, y: 2 }
+]
+```
+
+The top of the stack is at position 0.
+
 ### Operations
 #### Tables
 ```ATTACH <url> AS <name>```

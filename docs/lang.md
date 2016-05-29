@@ -205,7 +205,7 @@ If the *AS* were omitted, the result would be:
 
 ### Futher Examples
 
-These example are rudimentary, a more involved example can be found in (xalgo-examples/bamako-to-montreal/).
+These example are rudimentary, a more involved example can be found in [bamako-to-montreal](xalgo-examples/bamako-to-montreal/).
 
 
 This is a generic example to show the way that JOIN will function.

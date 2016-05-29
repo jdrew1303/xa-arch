@@ -205,6 +205,9 @@ If the *AS* were omitted, the result would be:
 
 ### Futher Examples
 
+These example are rudimentary, a more involved example can be found in (xalgo-examples/bamako-to-montreal/).
+
+
 This is a generic example to show the way that JOIN will function.
 
 ##### Tables
@@ -291,4 +294,5 @@ unspsc_items = [
   { name: 'Power Adapter' },
 ]
 ```
+
 Dual Licensed: CC-by-4.0 and Apache 2.0 

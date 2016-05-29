@@ -50,14 +50,112 @@ Duplicate the top of the stack.
 #### Mutations
 
 ```
-JOIN USING [[l0, ..., lN], [r0, ..., rN]] INCLUDE [c0, ..., cN]
+JOIN USING [[l0, ..., lN], [r0, ..., rN]] INCLUDE [c0 AS x0, ..., cN AS xN]
 ```
 
-Join two tables where the columns from the left match the columns on the right. The tables are pulled from the stack as right, then left. The resulting table is pushed to the stack. The INCLUDE is optional and specifies a list of columns from the right table that should appear in the result. If there is no INCLUDE, all columns are merged into the resulting table. If there are column name collisions, the columns from the right table take precedence. This can be used to replace columns in the left table.
+Join two tables where the columns from the left match the columns on the right. The tables are pulled from the stack as right, then left. The resulting table is pushed to the stack.
+
+The INCLUDE is optional and specifies a list of columns from the right table that should appear in the result. If there is no INCLUDE, all columns are merged into the resulting table. If there are column name collisions, the columns from the right table take precedence. This can be used to replace columns in the left table. Every column in the *INCLUDE* can take an option *AS* specification to rename the column from the right side of the join in the resulting table.
+
+```
+INCLUSION USING [[l0, ..., lN], [r0, ..., rN]] INCLUDE [is_member AS x, is_not_member AS x]
+```
+
+This mutation works like JOIN, except that it produces an interim table which **only includes** boolean values that indicate whether the JOIN produced a match for a given row. This can be used to add values to the result table that indicate whether a row from the left matched a row on the right.
+
+For example, given stack:
+
+```
+0 => [
+ { a: 1 },
+ { a: 3 },
+]
+1 => [
+ { a: 1, b: 2, c: 3 },
+ { a: 2, b: 4, c: 6 },
+ { a: 3, b: 6, c: 9 },
+]
+```
+
+Then:
+
+```
+INCLUSION USING [[a], [a]]
+```
+
+would produce:
+
+```
+0 => [
+ { a: 1, b: 2, c: 3, is_member: true, is_not_member: false },
+ { a: 2, b: 4, c: 6, is_member: false, is_not_member: true },
+ { a: 3, b: 6, c: 9, is_member: true, is_not_member: false },
+]
+```
+
+*AS* could be used to refine the results, so given:
+
+```
+INCLUSION USING [[a], [a]] INCLUDE [is_member AS z]
+```
+
+would yield:
+
+```
+0 => [
+ { a: 1, b: 2, c: 3, z: true },
+ { a: 2, b: 4, c: 6, z: false },
+ { a: 3, b: 6, c: 9, z: true },
+]
+```
+
+
+```
+REDUCE z USING func(c0, ..., cN) AS x
+```
+
+This mutation operates on the table on the top of the stack. It will apply a *function* of the form *func(a, c)* for each column *c* specified in the arguments to the function where *a* is value of the previous application of the function. This acts as an accumlator over the column *c*. The optional *AS* specification indicates the column to create or replace in the resulting table. If the *AS* is not specified, *z* will be replaced.
+
+For example, given top-of-stack:
+
+```
+[
+ { a: 1, b: 2, c: 3 },
+ { a: 2, b: 4, c: 6 },
+ { a: 3, b: 6, c: 9 },
+]
+```
+
+Then:
+
+```
+REDUCE a USING add(b, c) AS d
+```
+
+will produce:
+
+```
+[
+ { a: 1, b: 2, c: 3, d: 6 },
+ { a: 2, b: 4, c: 6, d: 12 },
+ { a: 3, b: 6, c: 9, d: 18 }
+]
+```
+
+If the *AS* were omitted, the result would be:
+
+```
+[
+ { a: 6, b: 2, c: 3 },
+ { a: 12, b: 4, c: 6 },
+ { a: 18, b: 6, c: 9 }
+]
+```
+
 
 *More mutations will be added as required*.
 
-### Examples
+### Futher Examples
 
 This is a generic example to show the way that JOIN will function.
 

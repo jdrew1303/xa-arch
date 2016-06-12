@@ -101,7 +101,7 @@ Duplicate the top of the stack.
 JOIN USING [[l0, ..., lN], [r0, ..., rN]] INCLUDE [c0 AS x0, ..., cN AS xN]
 ```
 
-Join two tables where the columns from the left match the columns on the right. The tables are pulled from the stack as right, then left. The resulting table is pushed to the stack.
+[Join](https://en.wikipedia.org/wiki/Join_%28SQL%29) two tables where the columns from the left match the columns on the right. The tables are pulled from the stack as right, then left. The resulting table is pushed to the stack.
 
 The INCLUDE is optional and specifies a list of columns from the right table that should appear in the result. If there is no INCLUDE, all columns are merged into the resulting table. If there are column name collisions, the columns from the right table take precedence. This can be used to replace columns in the left table. Every column in the *INCLUDE* can take an option *AS* specification to rename the column from the right side of the join in the resulting table.
 

@@ -10,11 +10,11 @@ ATTACH http://... AS mali_taxation
 ## external - tables
 
 # tables provided by base XA system for membership in international orgs
-PULL xalgo:waemu_members:1 AS waemu
-PULL xalgo:eu_members:1 AS eu
+PULL xalgo:waemu_members:1 AS waemu_members
+PULL xalgo:eu_members:1 AS eu_members
 
 # mapping tables provided by XA system
-PULL xalgo:unspsc_to_hs:1 AS un_hs
+PULL xalgo:unspsc_to_hs:1 AS unspsc_to_hs
 
 # EU taxation tables
 PULL eu_taxation:eu_vat_internal:1 AS eu_vat_internal
@@ -34,18 +34,18 @@ PULL mali_taxation:mali_csl:1 AS mali_csl
 PUSH invoices
 
 # add hs_codes based on unspsc
-PUSH un_hs
+PUSH unspsc_to_hs
 JOIN USING [[unspsc], [unspsc_code]] INCLUDE [hs_code]
 
 # determine waemu inclusion / exclusion
-PUSH waemu
+PUSH waemu_members
 INCLUSION USING [[buyer_location], [code]] INCLUDE [is_member AS buyer_in_waemu]
 
-PUSH waemu
+PUSH waemu_members
 INCLUSION USING [[seller_location], [code]] INCLUDE [is_member AS seller_in_waemu]
 
 # determine EU inclusion
-PUSH eu
+PUSH eu_members
 INCLUSION USING [[buyer_location], [code]] INCLUDE [is_member AS buyer_in_eu]
 
 # apply WAEMU CET taxation
@@ -72,7 +72,7 @@ JOIN USING [[buyer_location, hs_code], [buyer_country, hs_code]] INCLUDE [multip
 ## all taxation multipliers are in the ToS, reduce
 
 # for each row multiply using the specified columns; missing columns == multiply by identity (*1)
-REDUCE price USING mult(waemu_multiplier, eu_member_vat_multiplier, eu_nonmember_vat_multiplier, eu_member_esc_multiplier, mali_csl_multiplier, mali_st_multiplier) AS taxed_price
+ACCUMULATE price USING mult(waemu_multiplier, eu_member_vat_multiplier, eu_nonmember_vat_multiplier, eu_member_esc_multiplier, mali_csl_multiplier, mali_st_multiplier) AS taxed_price
 
 # export our results
 COMMIT taxed_invoices[unspsc, hs_code, price, taxed_price]

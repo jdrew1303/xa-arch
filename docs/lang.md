@@ -60,9 +60,9 @@ The top of the stack is at position 0.
 
 Associate a *repository* at the URL with a name within the scope of the current program.
 
-```PULL <repo>:<rule>:<version> AS <name>[<c0>, ..., <cN>]```
+```PULL <repo>:<rule>:<version> AS <name>```
 
-Pull a table with the given *name* and *version* from a previously named repository. The table will be referencable using the supplied *name*.
+Pull a table with the given *name* and *version* from a previously named repository. The table will be referenced using the supplied *name*.
 
 ```INVOKE <repo>:<rule>:<version>```
 

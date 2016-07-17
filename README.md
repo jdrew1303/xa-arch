@@ -59,16 +59,8 @@ Xalgorithms Foundation is a Canadian-based member-funded not-for-profit, incorpo
 
 HOW TO CONTRIBUTE (FINANCIALLY)
 
-Xalgorithms Foundation offers five categories of membership in Xalgorithms Alliance. Annual memberships to Xalgorithms Alliance can be paid annually or monthly to Xalgorithms Foundation:
-* Tier 1 = CAD$500 annually (or CAD$42 per month)
-* Tier 2 = CAD$10,000 annually (or CAD$833 per month)
-* Tier 3 = CAD$25,000 annually (or CAD$2,083 per month)
-* Tier 4 = Lump-sum or scheduled contributions of funds and/or other resources.
+Xalgorithms Foundation offers five categories of membership in Xalgorithms Alliance. For details, see: https://www.xalgorithms.org/about-us/membership/
 
-Additional payment options can be negotiated by writing info@xalgorithms.org.
-
-Xalgorithms Foundation chooses payment processing intermediaries that most closely conform with the following open market principle: "Payers and payees have unencumbered knowledge and choice in the attributes of price and payment method, to the full extent of their lawful prerogatives in their respective jurisdictions."
- 
 PROJECT MANAGEMENT
 
 Xalgorithms is managed on an instance of OpenProject located at:

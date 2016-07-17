@@ -55,7 +55,7 @@ HOW TO CONTRIBUTE (BUSINESS MANAGEMENT, GOVERNANCE)
 
 Participation in business management and governance of Xalgorithms Alliance is structured through an explict contract with Xalgorithms Foundation, namely the "XALGORITHMS ALLIANCE ACCESSION AGREEMENT" https://www.xalgorithms.org/about-us/membership/ 
 
-Xalgorithms Foundation is a Canadian-based member-funded not-for-profit, incorportated in Canada. The sole purpose of the Foundation is to provide management and governance services to the Xalgorithms Alliance. And Xalgorithms Alliance exists as an unincorporated association of members committed to fostering a free/libre/open Internet of Rules, initially (but not exclusively) to advance the fairness and efficiency of commerce.  
+Xalgorithms Foundation is a Canadian-based member-funded not-for-profit, incorportated in Canada. The sole purpose of the Foundation is to provide management and governance services to the Xalgorithms Alliance. And Xalgorithms Alliance exists as an unincorporated association of members committed to fostering a free/libre/open Internet of Rules to advance the fairness and efficiency of commerce.  
 
 HOW TO CONTRIBUTE (FINANCIALLY)
 

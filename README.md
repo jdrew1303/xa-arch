@@ -28,8 +28,7 @@ INTELLECTUAL RIGHTS & LICENSING
 
 Xalgorithms Alliance aligns with both the demand-side perspective of The Free Software Definition (i.e. user freedoms), and the supply-side perspective of The Open Source Software Definition (i.e. developer methodologies).
 
-The intellectual rights section of the Xalgorithms Alliance Accession Agreement (XAAA) is adapted from the Fedora Project Contributor Agreement, Version 2015-02-03:
-https://fedoraproject.org/wiki/Legal:Fedora_Project_Contributor_Agreement?rd=Legal:FPCA  Our common objective is to ensure that contributions have the desired free/libre/open licensing terms without requiring intellectual rights assignment. The XAAA is found at: https://www.xalgorithms.org/about-us/membership/
+The intellectual rights section of the [Xalgorithms Alliance Accession Agreement](https://www.xalgorithms.org/about-us/membership/) (XAAA) is adapted from the [Fedora Project Contributor Agreement, Version 2015-02-03](https://fedoraproject.org/wiki/Legal:Fedora_Project_Contributor_Agreement?rd=Legal:FPCA)  Our common objective is to ensure that contributions have the desired free/libre/open licensing terms without requiring intellectual rights assignment. 
 
 In summary, when a committer submits an unlicensed contribution to this project, Xalgorithms Alliance relies on the following default licenses:
 * [Apache 2.0 or a more recent version](https://www.apache.org/licenses/LICENSE-2.0)
@@ -37,7 +36,7 @@ In summary, when a committer submits an unlicensed contribution to this project,
 * [LGPL 3.0 or a more recent version](https://www.gnu.org/licenses/lgpl.html)
 * [CC-by 4.0 or a more recent version](https://creativecommons.org/licenses/by/4.0/)
 
-The first three licenses in this list include explicit non-aggression clauses relating to statutory monopolies over ideas (i.e. "patents"). Occassionally Xalgorithms Foundation may post "defensive publications" to pre-empt the imposition of such monopolies: http://www.defensivepublications.org/
+The first three licenses in this list include explicit non-aggression clauses relating to statutory monopolies over ideas (i.e. "patents"). Occassionally Xalgorithms Foundation may post [defensive publications](http://www.defensivepublications.org/) to pre-empt the imposition of such monopolies.
 
 On an ad hoc basis, other free/libre/open source licenses may additionally be used by Xalgorithms Foundation in combination with the default licenses, to accommodate certain participation requirements other organizations, or to meet particular business objectives of the Alliance which are not fully accommodated in the above licenses.
 
@@ -47,7 +46,7 @@ In order to make the Lichen component readily adaptable to any deployment enviro
 
 HOW TO CONTRIBUTE (SOURCE CODE, SYSTEMS MANAGEMENT)
 
-All Xalgorithms source code and technical documentation is maintained on Github https://github.com/Xalgorithms. In the future components may also be mirrored on Bitbucket https://bitbucket.org/.
+All Xalgorithms source code and technical documentation is [maintained on Github](/Xalgorithms). In the future components may also be mirrored on [Bitbucket](https://bitbucket.org/)... but we've not done this yet.
 
 Participation in technical work of Xalgorithms Alliance is by free/libre/open source licensing (in order to state terms and conditions for the distribution and use of works, respecting intellectual rights title) and by contract (in order to state intellectual rights title). The contract may either be [explicit](https://www.xalgorithms.org/about-us/membership/) through the "XALGORITHMS ALLIANCE ACCESSION AGREEMENT" or [implied in fact](https://www.law.cornell.edu/wex/contract_implied_in_fact)  Participating under an implied contract shall always be assumed as carrying the same terms as the XALGORITHMS ALLIANCE ACCESSION AGREEMENT.
 

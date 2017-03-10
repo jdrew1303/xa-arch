@@ -1,0 +1,25 @@
+A Musician from Bamako Goes to Montreal:
+
+Once it’s launched, Lichen can be used to simplify and expedite cross-border purchasing.
+
+While in Montreal for the Jazz Festival, a musician from Bamako, Mali needed to quickly
+replace her damaged guitar. She purchased the new one from the original French musical
+instrument manufacturer’s direct sales website, and arranged for it to be sent by courier
+to her hotel in Montreal. Since the vendor’s e-commerce application runs Lichen, it
+automatically recognized her primary residence as being in Mali, even though the guitar
+was being shipped from France to Canada. Lichen correctly calculated and displayed the
+Mali import duty. To check the amount, she tapped on “Details” and saw there that the
+valuation method is CIF (Cost, Insurance and Freight), meaning that the duties payable are
+calculated on the complete shipping value, which includes the cost of the imported goods,
+the cost of freight, and the cost of insurance. Since Lichen is implemented directly in
+the e-commerce site, she could choose to pay the import duty automatically so that the
+shipment can be pre-cleared through customs, thus saving two days shipping time. She
+accepted the notification and proceeded with payment to both the vendor and Mali’s revenue
+agency. Since tax and duties were paid, the shipping manifest issued by the French vendor
+contained all the documentation required for the courier to have this item pre-clear
+Canadian Customs. As a result she received her replacement guitar in time for the concert.
+
+Using Lichen saved her the hassle of initially having to pay the Canadian GST of 5%, as
+well as Quebec’s QST of 9.98% in Montreal, attempting to claim back those amounts at
+Montreal’s airport prior to departure, and then paying the 20% sales tax upon arrival back
+at Bamako–Sénou International Airport.

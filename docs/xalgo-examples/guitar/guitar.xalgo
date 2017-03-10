@@ -1,0 +1,55 @@
+# lichen context expectations
+EXPECTS locations[buyer_location_country, seller_location_country, unspsc, price]
+EXPECTS invoices[buyer_location, seller_location, unspsc, price]
+
+# registries
+ATTACH http://... AS xalgo
+ATTACH http://... AS france_taxation
+ATTACH http://... AS mali_taxation
+
+## external - tables
+
+
+
+# MALI taxation tables
+PULL mali_taxation:mali_st:1 AS mali_st
+PULL mali_taxation:mali_csl:1 AS mali_csl
+
+# France taxation tables
+PULL france_taxation:france_st:1 AS france_st
+PULL france_taxation:france_csl:1 AS france_csl
+
+## imports finished - computation follows
+
+# everything starts with the Lichen provided invoice data
+PUSH invoices
+
+# add hs_codes based on unspsc
+PUSH unspsc_to_hs
+JOIN USING [[unspsc], [unspsc_code]] INCLUDE [hs_code]
+
+
+
+# apply France taxation
+PUSH eu_vat_internal
+JOIN USING [[buyer_in_eu, hs_code], [buyer_member, hs_code]] INCLUDE [multiplier AS eu_member_vat_multiplier]
+
+PUSH eu_vat_external
+JOIN USING [[buyer_location, hs_code], [buyer_country, hs_code]] INCLUDE [multiplier AS eu_nonmember_vat_multiplier]
+
+PUSH eu_escalation
+JOIN USING [[buyer_in_eu, hs_code], [buyer_member, hs_code]] INCLUDE [multiplier AS eu_member_esc_multiplier]
+
+# MALI taxation
+PUSH mali_csl
+JOIN USING [[buyer_location, hs_code], [buyer_country, hs_code]] INCLUDE [multiplier AS mali_csl_multiplier]
+
+PUSH mali_st
+JOIN USING [[buyer_location, hs_code], [buyer_country, hs_code]] INCLUDE [multiplier AS mali_st_multiplier]
+
+
+# for each row multiply using the specified columns; missing columns == multiply by identity (*1)
+ACCUMULATE price USING mult(mali_multiplier, france_multiplier) AS taxed_price
+
+# export our results
+COMMIT taxed_invoices[unspsc, hs_code, price, taxed_price]

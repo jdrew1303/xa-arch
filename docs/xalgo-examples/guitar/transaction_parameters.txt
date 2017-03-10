@@ -1,0 +1,7 @@
+customer residence:                    Mali
+purchase location:                     Montreal, QC, CA
+country of manufacture:                France
+vendor location:                       France
+valuation method:                      CIF
+import duty applicable items:          purchase cost, shipping, freight
+sales tax applicable:                  none

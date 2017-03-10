@@ -1,0 +1,14 @@
+[
+    { "buyer_location_country": "CA" },
+    { "buyer_location_state/province": "QC" },
+    { "buyer_location_city": "MTL" },
+    { "buyer_residence_country": "MLI" },
+    { "buyer_residence_state/province": "" },
+    { "buyer_residence_city": "" },
+    { "vendor_location_country": "FRA" },
+    { "vendor_location_state/province": "" },
+    { "vendor_location_city": "" },
+    { "manufacturer_location_country": "FRA" },
+    { "manufacturer_location_state/province": "" },
+    { "manufacturer_location_city": "" }
+]
